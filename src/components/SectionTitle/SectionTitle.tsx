@@ -1,4 +1,5 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 import leftPattern from "../../assets/section-title-illust-left.svg";
 import rightPattern from "../../assets/section-title-illust-right.svg";
@@ -14,50 +15,62 @@ interface SectionTitleProps {
 export const SectionTitle = ({
   bigLabel,
   smallLabel,
-  smallLabelSectionWidth,
   bigLabelFontSize,
   lineWidthPercentage,
 }: SectionTitleProps) => {
+  const [isWideScreen, setIsWideScreen] = useState<boolean>(false);
+
+  const fallbackFontSize = bigLabelFontSize || "300px";
+  const responsiveBigLabelFontSize = `clamp(100px, 16vw + 0.5rem, ${fallbackFontSize})`;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth >= 1350);
+    };
+
+    handleResize(); // Initial check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <Box
-      position="relative"
-      textAlign="center"
-      w={"100%"}
-      zIndex={1}
-      // border={"1px solid blue"}
-    >
+    <Box position="relative" textAlign="center" w="100%" zIndex={1}>
+      {/* Background Patterns */}
       <Image
         src={leftPattern}
         alt=""
-        pos={"absolute"}
+        pos="absolute"
         right={0}
-        transform={"translateY(-50%)"}
-        top={"50%"}
+        transform="translateY(-50%)"
+        top="50%"
       />
 
       <Image
         src={rightPattern}
         alt=""
-        pos={"absolute"}
+        pos="absolute"
         left={0}
-        transform={"translateY(-50%)"}
-        top={"50%"}
+        transform="translateY(-50%)"
+        top="50%"
       />
 
+      {/* Big Label */}
       <Text
-        fontSize={bigLabelFontSize || "300px"}
+        fontSize={isWideScreen ? fallbackFontSize : responsiveBigLabelFontSize}
         fontWeight="900"
         lineHeight="396px"
-        letterSpacing={"-7.2px"}
+        letterSpacing="-7.2px"
         fontFamily="bigShoulders"
         color="primary"
-        opacity={"11%"}
+        opacity="11%"
         textTransform="uppercase"
         userSelect="none"
       >
         {bigLabel}
       </Text>
 
+      {/* Small Label and Line */}
       <Flex
         position="absolute"
         top="50%"
@@ -65,20 +78,18 @@ export const SectionTitle = ({
         transform="translate(-50%, -50%)"
         align="center"
         gap={3}
-        width={smallLabelSectionWidth || "883px"}
-        // border={"2px solid red"}
+        width={"70%"}
         justifyContent="space-between"
-        alignItems={"center"}
+        alignItems="center"
       >
         <Text
           color="redAccent"
           fontWeight="700"
           fontSize="21.13px"
-          lineHeight={"44.8px"}
-          letterSpacing={"1.28px"}
+          lineHeight="44.8px"
+          letterSpacing="1.28px"
           fontFamily="inter"
           textTransform="uppercase"
-          // border={"2px solid red"}
         >
           {smallLabel}
         </Text>
