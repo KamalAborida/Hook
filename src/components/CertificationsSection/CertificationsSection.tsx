@@ -34,10 +34,10 @@ export default function CertificationsSection({
         pos={"relative"}
         bottom={"55px"}
       >
-        <Image src={halalCert} alt={""} />
-        <Image src={haccpCert} alt={""} />
-        <Image src={isoCert} alt={""} />
-        <Image src={haccpCert} alt={""} />
+        <Image w={"20%"} src={halalCert} alt={""} />
+        <Image w={"20%"} src={haccpCert} alt={""} />
+        <Image w={"20%"} src={isoCert} alt={""} />
+        <Image w={"20%"} src={haccpCert} alt={""} />
       </Flex>
     </Box>
   );
