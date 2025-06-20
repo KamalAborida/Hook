@@ -5,11 +5,11 @@ import { useState } from "react";
 import { CATEGORIES } from "./data";
 
 export const ProductsGrid = () => {
-  const [activeCategory, setActiveCategory] = useState("beef");
+  const [activeCategory, setActiveCategory] = useState("beef")
 
   const currentCategory = CATEGORIES.find(
     (category) => category.key === activeCategory
-  );
+  )
 
   return (
     <Box pt={"70px"} pb={"150px"} fontFamily={"dm"}>
