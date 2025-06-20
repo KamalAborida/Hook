@@ -55,7 +55,6 @@ export const SectionWithMedia = ({
         direction={mediaPosition === "left" ? "row" : "row-reverse"}
         justifyContent="space-between"
         alignItems="center"
-        // border={"1px solid red"}
       >
         {Media}
         {Content}

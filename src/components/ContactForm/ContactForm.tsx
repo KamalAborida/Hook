@@ -54,7 +54,7 @@ export const ContactForm = ({ hasBigTitle = true }: ContactFormProps) => {
       <Box as="form">
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
           {formFields.map(({ label, placeholder, name, type = "text" }) => (
-            <FormControl key={name} w={"278px"}>
+            <FormControl key={name} maxW={"278px"} w={"100%"}>
               <FormLabel
                 fontSize="12px"
                 color="#8D8D8D"

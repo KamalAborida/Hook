@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Link } from "@chakra-ui/react";
+import { Box, Flex, Image, Link, useMediaQuery } from "@chakra-ui/react";
 import { NavLink as RouterNavLink, useLocation } from "react-router-dom";
 import { PatternedButton } from "../PatternedButton/PatternedButton";
 
@@ -14,6 +14,8 @@ const navItems = [
 
 export const Navbar = () => {
   const location = useLocation();
+  const [isLessThan1100] = useMediaQuery("(max-width: 1000px)");
+  const navItemsSpacing = isLessThan1100 ? 5 : undefined;
 
   return (
     <Box
@@ -35,7 +37,7 @@ export const Navbar = () => {
       {/* Logo */}
       <Image src={logo} alt="Logo" objectFit="contain" />
 
-      <Flex gap={14} alignItems={"flex-end"}>
+      <Flex gap={navItemsSpacing || 14} alignItems={"flex-end"}>
         {navItems.map(({ label, to }, index) => (
           <Box
             pos={"relative"}

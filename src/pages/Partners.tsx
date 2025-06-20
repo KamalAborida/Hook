@@ -35,7 +35,7 @@ Our partners help us bring the Hoka experience to homes,\nrestaurants, and gourm
           bigLabelFontSize="250px"
           smallLabelSectionWidth="65%"
         />
-        <PartnersLogo width="70%" />
+        <PartnersLogo width="80%" />
       </Box>
 
       <CallToAction

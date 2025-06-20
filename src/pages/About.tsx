@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useMediaQuery } from "@chakra-ui/react";
 import bg from "../assets/hero-bg.png";
 import { SectionWithMedia } from "../components/SectionWithMedia/SectionWithMedia";
 
@@ -13,11 +13,14 @@ import PageTitle from "../components/PageTitle/PageTitle";
 import { WhoWeAreFeatureList } from "../components/SectionWithMedia/WhoWeAreFeatureList";
 
 export default function About() {
+  const [isLessThan1100] = useMediaQuery("(max-width: 1000px)");
+  const boxWidth = isLessThan1100 ? "100%" : undefined;
+
   return (
     <Box>
       <PageTitle bg={bg} title="About Us" />
 
-      <Box width={"70%"} m={"0 auto"} bg={"white"} mt={"100px"} mb={"150px"}>
+      <Box width={boxWidth || "80%"} m="0 auto" bg="white" mt="100px" mb="150px">
         <SectionWithMedia
           bigLabel="Who We Are"
           smallLabel="Who We Are"
@@ -32,7 +35,7 @@ export default function About() {
         text="Hoka began with a simple realization — customers deserve better. Better meat. Better service. Better sourcing. We started by partnering with farms and suppliers who share our dedication to ethical sourcing and superior quality. Every cut we offer is carefully selected and expertly handled, from farm to table"
       />
 
-      <Box width={"60%"} m={"0 auto"} bg={"white"} my={"150px"}>
+      <Box width={boxWidth || "60%"} m="0 auto" bg="white" my="150px">
         <SectionWithMedia
           bigLabel="Why hook"
           smallLabel="Why hook"
@@ -47,7 +50,7 @@ export default function About() {
         text="We’re passionate about meat — but even more passionate about how it’s sourced, cut, and served. Our team of skilled butchers brings generations of expertise to the table, delivering cuts that are fresh, honest, and made just for you."
       />
 
-      <Box width={"70%"} m={"0 auto"} bg={"white"} my={"150px"}>
+      <Box width={boxWidth || "70%"} m="0 auto" bg="white" my="150px">
         <SectionWithMedia
           bigLabel="What We Offer"
           smallLabel="What We Offer"

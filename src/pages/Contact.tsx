@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import PageTitle from "../components/PageTitle/PageTitle";
 
 import bg from "../assets/hero-bg.png";
@@ -7,11 +7,14 @@ import { ContactCard } from "../components/ContactCard.tsx/ContactCard";
 import { ContactForm } from "../components/ContactForm/ContactForm";
 
 export default function Contact() {
+    const [isLessThan1100] = useMediaQuery("(max-width: 1000px)");
+    const boxWidth = isLessThan1100 ? "95%" : undefined;
+
   return (
     <Box>
       <PageTitle bg={bg} title="Contact Us" />
 
-      <Flex w={"80%"} my={"120px"} mx={"auto"} justifyContent={"space-between"} alignItems={"center"}>
+      <Flex w={boxWidth || "80%"} my={"120px"} mx={"auto"} justifyContent={"space-between"} alignItems={"center"}>
         <ContactCard />
         <ContactForm hasBigTitle={false} />
       </Flex>

@@ -8,13 +8,12 @@ interface SectionHeaderProps {
 
 export const SectionHeader = ({
   smallLabel,
-  bigLabel,
-  width = "500px",
+  bigLabel
 }: SectionHeaderProps) => {
   const phrase = bigLabel.split(" ");
 
   return (
-    <Box position="relative" w={width} zIndex={1}>
+    <Box position="relative" w={"100%"} zIndex={1}>
       <Box>
         <Text
           fontSize={{ base: "60px", md: "128px" }}

@@ -8,23 +8,25 @@ interface PageTitleProps {
 const PageTitle = ({ bg, title }: PageTitleProps) => {
   return (
     <Flex
-      w={"100%"}
-      h={"40vh"}
+      w="100%"
+      h="40vh"
       p={0}
       bgImage={bg}
       bgSize="100%"
-      textAlign={"center"}
-      justifyContent={"center"}
-      alignItems={"center"}
+      textAlign="center"
+      justifyContent="center"
+      alignItems="center"
     >
       <Text
-        fontSize="128px"
         fontWeight="600"
         lineHeight="61.6px"
         fontFamily="montserrat"
         color="primary"
         textTransform="uppercase"
         userSelect="none"
+        sx={{
+          fontSize: "clamp(48px, 10vw, 128px)",
+        }}
       >
         {title}
       </Text>
